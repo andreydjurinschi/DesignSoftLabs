@@ -1,10 +1,17 @@
 package lab01.softlab.entities;
 
+import jakarta.persistence.*;
+
 /**
  * User domain model
  */
 
+@Entity
+@Table(name = "users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     private String name;
@@ -13,6 +20,7 @@ public class User {
 
     private float rating;
 
+    @Enumerated(EnumType.ORDINAL)
     private Role role;
 
     public Long getId() {
