@@ -22,5 +22,6 @@
 
 1) Domain model [User class](softLab/src/main/java/lab01/softlab/entities/User.java):
 2) Enum class [Role class](softLab/src/main/java/lab01/softlab/entities/Role.java);
-
-3) 
+3) H2 db [Db conf class](softLab/src/main/java/lab01/softlab/configs/dbConfig.java);
+4) Field Mask [Field Mask class](softLab/src/main/java/lab01/softlab/mask/UserFieldMask.java)
+5) 
