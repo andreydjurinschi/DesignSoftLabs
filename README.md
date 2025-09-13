@@ -17,3 +17,38 @@
 Выполните unit test-ы используй фреймворк (xunit).
 Переделайте маску полей на основе битов.
 Сделайте 3 метода, работающие на основе масок, комбинирующих их тем или иным полезным образом.
+
+### Рабочий процесс
+
+1) Domain model [User class]():
+
+```java
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
+    private String name;
+
+    private int age;
+
+    private float rating;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
+
+// ниже геттеры 
+```
+
+2) Enum class
+
+```java
+public enum Role {
+    ADMINISTRATOR, MANAGER, TEACHER
+}
+```
+
+3) 
