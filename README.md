@@ -20,7 +20,7 @@
 
 ### Рабочий процесс
 
-1) Domain model [User class]():
+1) Domain model [User class](softLab/src/main/java/lab01/softlab/entities/User.java):
 
 ```java
 @Entity
@@ -43,7 +43,7 @@ public class User {
 // ниже геттеры 
 ```
 
-2) Enum class
+2) Enum class [Role class](softLab/src/main/java/lab01/softlab/entities/Role.java)
 
 ```java
 public enum Role {
