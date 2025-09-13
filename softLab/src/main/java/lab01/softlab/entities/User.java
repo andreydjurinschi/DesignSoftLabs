@@ -20,6 +20,7 @@ public class User {
 
     private float rating;
 
+    @Enumerated(EnumType.ORDINAL)
     private Role role;
 
     public Long getId() {
