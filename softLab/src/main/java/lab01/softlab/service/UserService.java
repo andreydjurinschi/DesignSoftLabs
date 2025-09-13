@@ -1,5 +1,6 @@
 package lab01.softlab.service;
 
+import lab01.softlab.entities.Role;
 import lab01.softlab.entities.User;
 import lab01.softlab.mask.UserFieldMask;
 import lab01.softlab.printer.Printer;
@@ -17,13 +18,25 @@ public class UserService {
         this.repo = repo;
     }
 
+    /**
+     *
+     * @param mask
+     * @return
+     */
     public List<Object> getAllRefToMask(UserFieldMask mask){
         List<User> allUsers = repo.findAll();
         List<Object> res = new ArrayList<>();
-
         for(var user : allUsers){
            res.add(Printer.print(user, mask));
         }
         return res;
+    }
+
+    public List<User> getAllByName(String name){
+        return repo.findByName(name);
+    }
+
+    public List<User> getRetired(Role role){
+        return repo.findRetiredUsersByRole(role);
     }
 }

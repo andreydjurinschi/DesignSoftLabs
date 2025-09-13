@@ -5,7 +5,7 @@ INSERT INTO users (id, name, age, rating, role) VALUES
     (2, 'manager1', 40, 7.2, 2),
     (3, 'admin1', 35, 9.0, 1),
     (4, 'teacher2', 28, 6.8, 1),
-    (5, 'manager2', 45, 7.5, 2),
+    (5, 'manager2', 80, 7.5, 2),
     (6, 'admin2', 38, 8.9, 0),
     (7, 'teacher3', 32, 7.7, 1),
     (8, 'manager3', 42, 6.9, 2),
