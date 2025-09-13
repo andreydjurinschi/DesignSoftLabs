@@ -1,6 +1,5 @@
 package lab01.softlab.printer;
 
-import lab01.softlab.entities.Role;
 import lab01.softlab.entities.User;
 import lab01.softlab.mask.UserFieldMask;
 import org.springframework.stereotype.Component;
@@ -11,7 +10,13 @@ import java.util.Map;
 
 @Component
 public class Printer {
-
+    /**
+     * Prints the user data specified in mask
+     *
+     * @param user {@link User}
+     * @param mask {@link UserFieldMask}
+     * @return map of key and user field values
+     */
     public static Map<String, Object> print(User user, UserFieldMask mask){
         Map<String, Object> res = new HashMap<>();
 
@@ -30,7 +35,6 @@ public class Printer {
         if(mask.isRole()){
             res.put("role", user.getRole());
         }
-
         return res;
     }
 }

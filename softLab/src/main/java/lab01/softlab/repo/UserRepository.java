@@ -13,11 +13,9 @@ import java.util.List;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
-
     @Query("select u from User u where u.name = :name")
     List<User> findByName(String name);
 
     @Query("select u from User u where u.role = :role and u.age > 60")
     List<User> findRetiredUsersByRole(Role role);
-
 }

@@ -19,9 +19,10 @@ public class UserService {
     }
 
     /**
-     *
-     * @param mask
-     * @return
+     * returns a list of users as maps,
+     * including only the fields specified in d {@link UserFieldMask}.
+     * @param mask {@link UserFieldMask} - defines that fields need to include
+     * @return List of {@link Object}
      */
     public List<Object> getAllRefToMask(UserFieldMask mask){
         List<User> allUsers = repo.findAll();
@@ -39,4 +40,10 @@ public class UserService {
     public List<User> getRetired(Role role){
         return repo.findRetiredUsersByRole(role);
     }
+
+    /*public List<User> get(){
+        return repo.selectByRating();
+    }*/
+
+
 }

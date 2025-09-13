@@ -16,7 +16,7 @@ import java.util.List;
  * Rest controller
  */
 @RestController
-@RequestMapping("/api/softlab")
+@RequestMapping("/api/softlab/users")
 public class UserController {
 
     private final UserService serv;
@@ -25,14 +25,16 @@ public class UserController {
         this.serv = serv;
     }
 
-    @GetMapping("/allUsers")
+    @GetMapping("/all")
     public ResponseEntity<List<Object>> getAll(@RequestBody UserFieldMask mask){
         return ResponseEntity.status(HttpStatus.OK).body(serv.getAllRefToMask(mask));
     }
-
-    @GetMapping("/retiredByRole/{role}")
-    public ResponseEntity<List<User>> getRetiredUsers(@PathVariable Role role){
+    @GetMapping("/find")
+    public ResponseEntity<List<User>> findByName(@RequestParam String name){
+        return ResponseEntity.status(HttpStatus.OK).body(serv.getAllByName(name));
+    }
+    @GetMapping("/retired")
+    public ResponseEntity<List<User>> getRetiredUsers(@RequestParam Role role){
         return ResponseEntity.status(HttpStatus.OK).body(serv.getRetired(role));
     }
-
 }
