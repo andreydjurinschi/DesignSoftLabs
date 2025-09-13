@@ -1,7 +1,10 @@
-/*
+
 package lab01.softlab.repo;
 
-public interface UserRepositoryCustom {
+import lab01.softlab.entities.User;
 
+import java.util.List;
+
+public interface UserRepositoryCustom {
+    List<User> findByName();
 }
-*/

@@ -2,7 +2,7 @@
 
 create table if not exists users(
     id bigint not null primary key unique,
-    name varchar(255) not null unique,
+    name varchar(255) not null,
     age int not null,
     rating float,
     role int not null
