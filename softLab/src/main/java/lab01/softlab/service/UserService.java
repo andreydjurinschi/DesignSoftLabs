@@ -42,9 +42,7 @@ public class UserService {
         return repo.findRetiredUsersByRole(role);
     }
 
-    /*public List<User> get(){
-        return repo.selectByRating();
-    }*/
+
 
 
 }
