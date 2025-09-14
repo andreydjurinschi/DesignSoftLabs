@@ -33,6 +33,7 @@ public class UserService {
         return res;
     }
 
+
     public List<User> getAllByName(String name){
         return repo.findByName(name);
     }

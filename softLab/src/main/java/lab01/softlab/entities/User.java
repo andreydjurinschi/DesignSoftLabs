@@ -41,4 +41,20 @@ public class User {
     public Role getRole() {
         return role;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
