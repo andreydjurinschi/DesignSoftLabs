@@ -117,6 +117,156 @@ public class Printer {
     }
 ```
 
+7. [Byte mask](softLab/src/main/java/lab01/softlab/mask/UserByteFieldMask.java)
+
+```java
+    public static final byte ID     = 0b00001;
+    public static final byte NAME   = 0b00010;
+    public static final byte AGE    = 0b00100;
+    public static final byte RATING = 0b01000;
+    public static final byte ROLE   = 0b10000;
+    
+    private byte mask = 0;
+    
+    public byte getMask() {
+        return mask;
+    }
+    
+    public void setMask(byte mask) {
+        this.mask = mask;
+    }
+    
+    public void addField(byte field) {
+        this.mask |= field;
+    }
+    
+    public boolean hasField(byte field) {
+        return (mask & field) != 0;
+    }
+    
+    public boolean hasID()     { return hasField(ID); }
+    public boolean hasNAME()   { return hasField(NAME); }
+    public boolean hasAGE()    { return hasField(AGE); }
+    public boolean hasRATING() { return hasField(RATING); }
+    public boolean hasROLE()   { return hasField(ROLE); }
+```
+
+Метод вывода на основе битовой маски точно такой-же 
+
+Метод в контроллере
+
+```java
+    @GetMapping("/allByByte")
+    public ResponseEntity<List<Map<String, Object>>> getAll(){
+        UserByteFieldMask mask = new UserByteFieldMask();
+        mask.addField(UserByteFieldMask.ID);
+        mask.addField(UserByteFieldMask.NAME);
+        mask.addField(UserByteFieldMask.ROLE);
+        return ResponseEntity.status(HttpStatus.OK).body(serv.getAllRefToMask(mask));
+    }
+```
+
+8. [Merge method](softLab/src/main/java/lab01/softlab/mask/MaskMethods.java)
+
+```java
+    // Метод для сравнения значений по маске
+    private boolean equalByMask(User u1, User u2, UserFieldMask mask){
+        if(mask.isAge() && u1.getAge() != u2.getAge()){
+            return false;
+        }
+        if(mask.isName() && !u1.getName().equals(u2.getName())){
+            return false;
+        }
+        if(mask.isRating() && u1.getRating() != u2.getRating()){
+            return false;
+        }
+        if(mask.isRole() && !u1.getRole().equals(u2.getRole())){
+            return false;
+        }
+        return true;
+    }
+```
+
+```java
+// Метод merge для всех пользователей из БД
+    public List<User> merge(UserFieldMask mask){
+        List<User> allUsers = repo.findAll();
+        List<User> merged = new ArrayList<>();
+        for(var u : allUsers){
+            User exists = merged.stream().filter(u1 -> equalByMask(u1, u, mask)).
+                    findFirst().orElse(null);
+            if(exists == null){
+                exists = new User();
+                exists.setName(u.getName());
+                exists.setAge(u.getAge());
+                exists.setRole(u.getRole());
+                exists.setRating(u.getRating());
+                merged.add(exists);
+            }else{
+                float avg = (float) allUsers.stream().mapToDouble(User::getRating).average().getAsDouble();
+                exists.setRating(avg);
+            }
+        }
+        return merged;
+    }
+```
+
+9. [Unit tests](softLab/src/test/java/lab01/user_mask_tests/UserMaskTests.java)
+
+```java
+    @Mock
+    private UserRepository repo;
+
+    @InjectMocks
+    private UserService service;
+```
+
+```java
+@Test
+    void getAll(){
+
+        UserFieldMask mask = new UserFieldMask();
+        mask.setAge(true);
+        mask.setName(true);
+        mask.setId(false);
+        mask.setRating(false);
+        mask.setRole(true);
+
+        User user1 = new User();
+        user1.setAge(10);
+        user1.setName("test1");
+        user1.setRating(1.5F);
+        user1.setRole(Role.ADMINISTRATOR);
+
+        User user2 = new User();
+        user2.setAge(11);
+        user2.setName("test2");
+        user2.setRating(5.5F);
+        user2.setRole(Role.TEACHER);
+
+        Mockito.when(repo.findAll()).thenReturn(List.of(user1, user2));
+        List<Map<String, Object>> users = service.getAllRefToMask(mask);
+
+        Assertions.assertNotNull(users);
+        Assertions.assertEquals(2, users.size());
+
+        Map<String, Object> u1 = users.get(0);
+        Assertions.assertEquals("test1", u1.get("name"));
+        Assertions.assertEquals(10, u1.get("age"));
+        Assertions.assertEquals(Role.ADMINISTRATOR, u1.get("role"));
+        Assertions.assertFalse(u1.containsKey("id"));
+        Assertions.assertFalse(u1.containsKey("rating"));
+
+        Map<String, Object> u2 = users.get(1);
+        Assertions.assertEquals("test2", u2.get("name"));
+        Assertions.assertEquals(11, u2.get("age"));
+        Assertions.assertEquals(Role.TEACHER, u2.get("role"));
+    }
+```
+
+
+
+
 
 
 

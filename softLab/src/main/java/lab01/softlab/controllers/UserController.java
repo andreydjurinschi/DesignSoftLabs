@@ -4,6 +4,7 @@ package lab01.softlab.controllers;
 import lab01.softlab.entities.Role;
 import lab01.softlab.entities.User;
 import lab01.softlab.mask.MaskMethods;
+import lab01.softlab.mask.UserByteFieldMask;
 import lab01.softlab.mask.UserFieldMask;
 import lab01.softlab.printer.Printer;
 import lab01.softlab.service.UserService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 
 /**
@@ -32,17 +33,29 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Object>> getAll(@RequestBody UserFieldMask mask){
+    public ResponseEntity<List<Map<String, Object>>> getAll(@RequestBody UserFieldMask mask){
         return ResponseEntity.status(HttpStatus.OK).body(serv.getAllRefToMask(mask));
     }
+
+    @GetMapping("/allByByte")
+    public ResponseEntity<List<Map<String, Object>>> getAll(){
+        UserByteFieldMask mask = new UserByteFieldMask();
+        mask.addField(UserByteFieldMask.ID);
+        mask.addField(UserByteFieldMask.NAME);
+        mask.addField(UserByteFieldMask.ROLE);
+        return ResponseEntity.status(HttpStatus.OK).body(serv.getAllRefToMask(mask));
+    }
+
     @GetMapping("/find")
     public ResponseEntity<List<User>> findByName(@RequestParam String name){
         return ResponseEntity.status(HttpStatus.OK).body(serv.getAllByName(name));
     }
+
     @GetMapping("/retired")
     public ResponseEntity<List<User>> getRetiredUsers(@RequestParam Role role){
         return ResponseEntity.status(HttpStatus.OK).body(serv.getRetired(role));
     }
+
     @GetMapping("/merge")
     public ResponseEntity<List<Object>> mergeUsers(@RequestBody UserFieldMask mask){
         List<User> merged = maskMethods.merge(mask);

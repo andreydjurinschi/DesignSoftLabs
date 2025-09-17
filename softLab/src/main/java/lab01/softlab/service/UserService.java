@@ -2,6 +2,7 @@ package lab01.softlab.service;
 
 import lab01.softlab.entities.Role;
 import lab01.softlab.entities.User;
+import lab01.softlab.mask.UserByteFieldMask;
 import lab01.softlab.mask.UserFieldMask;
 import lab01.softlab.printer.Printer;
 import lab01.softlab.repo.UserRepository;
@@ -24,11 +25,20 @@ public class UserService {
      * @param mask {@link UserFieldMask} - defines that fields need to include
      * @return List of {@link Object}
      */
-    public List<Object> getAllRefToMask(UserFieldMask mask){
+    public List<Map<String, Object>> getAllRefToMask(UserFieldMask mask){
         List<User> allUsers = repo.findAll();
-        List<Object> res = new ArrayList<>();
+        List<Map<String, Object>> res = new ArrayList<>();
         for(var user : allUsers){
            res.add(Printer.print(user, mask));
+        }
+        return res;
+    }
+
+    public List<Map<String, Object>> getAllRefToMask(UserByteFieldMask mask){
+        List<User> allUsers = repo.findAll();
+        List<Map<String, Object>> res = new ArrayList<>();
+        for(var user : allUsers){
+            res.add(Printer.print(user, mask));
         }
         return res;
     }

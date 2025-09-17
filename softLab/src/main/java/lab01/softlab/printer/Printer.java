@@ -1,6 +1,7 @@
 package lab01.softlab.printer;
 
 import lab01.softlab.entities.User;
+import lab01.softlab.mask.UserByteFieldMask;
 import lab01.softlab.mask.UserFieldMask;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +34,26 @@ public class Printer {
             res.put("rating", user.getRating());
         }
         if(mask.isRole()){
+            res.put("role", user.getRole());
+        }
+        return res;
+    }
+
+    public static Map<String, Object> print(User user, UserByteFieldMask mask){
+        Map<String, Object> res = new HashMap<>();
+        if(mask.hasID()){
+            res.put("id", user.getId());
+        }
+        if(mask.hasNAME()){
+            res.put("name", user.getName());
+        }
+        if(mask.hasAGE()){
+            res.put("age", user.getAge());
+        }
+        if(mask.hasRATING()){
+            res.put("rating", user.getRating());
+        }
+        if(mask.hasROLE()){
             res.put("role", user.getRole());
         }
         return res;

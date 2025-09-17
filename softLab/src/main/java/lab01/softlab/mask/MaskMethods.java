@@ -9,14 +9,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 
 @Component
 public class MaskMethods {
 
     private final UserRepository repo;
-    private final Logger logger = LoggerFactory.getLogger(MaskMethods.class);
 
     public MaskMethods(UserRepository repo) {
         this.repo = repo;
@@ -42,24 +39,6 @@ public class MaskMethods {
         }
         return merged;
     }
-
-   /* public List<User> copy(UserFieldMask mask, User copyFrom) {
-        List<User> allUsers = repo.findAll();
-        List<User> result = new ArrayList<>();
-
-        for (User u : allUsers) {
-            if (equalByMask(u, copyFrom, mask)) {
-                User copy = new User();
-                copy.setName(mask.isName() ? copyFrom.getName() : u.getName());
-                copy.setAge(mask.isAge() ? copyFrom.getAge() : u.getAge());
-                copy.setRating(mask.isRating() ? copyFrom.getRating() : u.getRating());
-                copy.setRole(mask.isRole() ? copyFrom.getRole() : u.getRole());
-                result.add(copy);
-            }
-        }
-        return result;
-    }*/
-
     private boolean equalByMask(User u1, User u2, UserFieldMask mask){
         if(mask.isAge() && u1.getAge() != u2.getAge()){
             return false;

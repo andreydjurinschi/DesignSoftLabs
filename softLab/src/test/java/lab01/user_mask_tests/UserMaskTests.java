@@ -30,7 +30,6 @@ public class UserMaskTests {
     @InjectMocks
     private UserService service;
 
-    private static final Logger logger = Logger.getLogger(UserMaskTests.class.getName());
 
     @Test
     void getAll(){
@@ -55,34 +54,34 @@ public class UserMaskTests {
         user2.setRole(Role.TEACHER);
 
         Mockito.when(repo.findAll()).thenReturn(List.of(user1, user2));
-        List<Object> users = service.getAllRefToMask(mask);
+        List<Map<String, Object>> users = service.getAllRefToMask(mask);
 
         Assertions.assertNotNull(users);
         Assertions.assertEquals(2, users.size());
 
-        Map<String, Object> u1 = (Map<String, Object>) users.get(0);
+        Map<String, Object> u1 = users.get(0);
         Assertions.assertEquals("test1", u1.get("name"));
         Assertions.assertEquals(10, u1.get("age"));
         Assertions.assertEquals(Role.ADMINISTRATOR, u1.get("role"));
         Assertions.assertFalse(u1.containsKey("id"));
         Assertions.assertFalse(u1.containsKey("rating"));
 
-        Map<String, Object> u2 = (Map<String, Object>) users.get(1);
+        Map<String, Object> u2 = users.get(1);
         Assertions.assertEquals("test2", u2.get("name"));
         Assertions.assertEquals(11, u2.get("age"));
         Assertions.assertEquals(Role.TEACHER, u2.get("role"));
     }
 
     @Test
-    void fetFieldByMask(){
-        byte mask =FieldMaskTestClass.createMask(FieldMaskTestClass.ID, FieldMaskTestClass.NAME);
+    void getFieldByMask(){
+        byte mask = FieldMaskTestClass.createMask(FieldMaskTestClass.ID, FieldMaskTestClass.NAME);
 
         boolean hasName = ((mask & FieldMaskTestClass.NAME) != 0);
         boolean hasRating = ((mask & FieldMaskTestClass.RATING) != 0);
         boolean hasId = ((mask & FieldMaskTestClass.ID) != 0);
 
+        Assertions.assertTrue(hasId);
         Assertions.assertTrue(hasName);
         Assertions.assertFalse(hasRating);
-        Assertions.assertTrue(hasId);
     }
 }
