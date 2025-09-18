@@ -61,9 +61,24 @@ public class UserController {
         List<User> merged = maskMethods.merge(mask);
         List<Object> result = new ArrayList<>();
         UserFieldMask mask1 = new UserFieldMask();
-        mask1.setName(true);
-        mask1.setAge(true);
-        mask1.setRating(true);
+        if(mask.isName()){
+            mask1.setName(true);
+            mask1.setRating(true);
+        }
+        if(mask.isRole()){
+            mask1.setRating(true);
+            mask1.setRole(true);
+        }
+        if(mask.isRating()){
+            mask1.setName(true);
+            mask1.setRating(true);
+        }
+        if(mask.isAge()){
+            mask1.setName(true);
+            mask1.setAge(true);
+            mask1.setRating(true);
+        }
+
         for(var u : merged){
             result.add(Printer.print(u, mask1));
         }

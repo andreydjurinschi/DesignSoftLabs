@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class MaskMethods {
@@ -26,15 +27,23 @@ public class MaskMethods {
             User exists = merged.stream().filter(u1 -> equalByMask(u1, u, mask)).
                     findFirst().orElse(null);
             if(exists == null){
-                exists = new User();
-                exists.setName(u.getName());
-                exists.setAge(u.getAge());
-                exists.setRole(u.getRole());
-                exists.setRating(u.getRating());
-                merged.add(exists);
+                boolean hasDuplicate = allUsers.stream().filter(u1 -> u1 != u)
+                        .anyMatch(u1 -> equalByMask(u1, u , mask));
+                if(hasDuplicate){
+                    exists = new User();
+                    exists.setName(u.getName());
+                    exists.setAge(u.getAge());
+                    exists.setRole(u.getRole());
+                    exists.setRating(u.getRating());
+                    merged.add(exists);
+                }
             }else{
-                float avg = (float) allUsers.stream().mapToDouble(User::getRating).average().getAsDouble();
-                exists.setRating(avg);
+                double avg = allUsers.stream()
+                        .filter(u1 -> equalByMask(u1, u, mask))
+                        .mapToDouble(User::getRating)
+                        .average()
+                        .orElse(u.getRating());
+                exists.setRating((float) avg);
             }
         }
         return merged;
