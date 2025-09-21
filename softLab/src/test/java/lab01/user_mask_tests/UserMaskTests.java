@@ -33,7 +33,6 @@ public class UserMaskTests {
 
     @Test
     void getAll(){
-
         UserFieldMask mask = new UserFieldMask();
         mask.setAge(true);
         mask.setName(true);

@@ -8,6 +8,7 @@ import lab01.softlab.mask.UserByteFieldMask;
 import lab01.softlab.mask.UserFieldMask;
 import lab01.softlab.printer.Printer;
 import lab01.softlab.service.UserService;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -78,7 +79,6 @@ public class UserController {
             mask1.setAge(true);
             mask1.setRating(true);
         }
-
         for(var u : merged){
             result.add(Printer.print(u, mask1));
         }

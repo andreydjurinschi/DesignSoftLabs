@@ -20,11 +20,11 @@
 
 ### Рабочий процесс
 
-1) [Domain model](softLab/src/main/java/lab01/softlab/entities/User.java):
-2) [Role enum class](softLab/src/main/java/lab01/softlab/entities/Role.java);
-3) [Db conf class](softLab/src/main/java/lab01/softlab/configs/dbConfig.java);
-4) [Field Mask class](softLab/src/main/java/lab01/softlab/mask/UserFieldMask.java)
-5) [User repository](softLab/src/main/java/lab01/softlab/repo/UserRepository.java)
+1) [Domain model](src/main/java/lab01/softlab/entities/User.java):
+2) [Role enum class](src/main/java/lab01/softlab/entities/Role.java);
+3) [Db conf class](src/main/java/lab01/softlab/configs/dbConfig.java);
+4) [Field Mask class](src/main/java/lab01/softlab/mask/UserFieldMask.java)
+5) [User repository](src/main/java/lab01/softlab/repo/UserRepository.java)
 
 Репозиторий содержит доп. методы для поиска пользователей по имени и выборку пользователь по роли и возрасту
 ```java
@@ -38,7 +38,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 }
 ```
 
-- Реализация двух кастомных методов [User service](softLab/src/main/java/lab01/softlab/service/UserService.java) | [User controller](softLab/src/main/java/lab01/softlab/controllers/UserController.java)
+- Реализация двух кастомных методов [User service](src/main/java/lab01/softlab/service/UserService.java) | [User controller](src/main/java/lab01/softlab/controllers/UserController.java)
 
 
 ```java
@@ -64,7 +64,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
     }
 ```
 
-6) [Printer class](softLab/src/main/java/lab01/softlab/printer/Printer.java)
+6) [Printer class](src/main/java/lab01/softlab/printer/Printer.java)
 
 ```java
 public class Printer {
@@ -93,7 +93,7 @@ public class Printer {
 
 метод на основе полученных значений из маски добавляет в результирующий словарь ключи на основе полей класса пользователя и их значений
 
-[Service](softLab/src/main/java/lab01/softlab/service/UserService.java)
+[Service](src/main/java/lab01/softlab/service/UserService.java)
 
 ```java
     public List<Object> getAllRefToMask(UserFieldMask mask){
@@ -108,7 +108,7 @@ public class Printer {
 
 на основе данных из маски возвращается список в виде словаря из данных пользователей
 
-[User controller](softLab/src/main/java/lab01/softlab/controllers/UserController.java)
+[User controller](src/main/java/lab01/softlab/controllers/UserController.java)
 
 ```java
     @GetMapping("/all")
@@ -117,7 +117,7 @@ public class Printer {
     }
 ```
 
-7. [Byte mask](softLab/src/main/java/lab01/softlab/mask/UserByteFieldMask.java)
+7. [Byte mask](src/main/java/lab01/softlab/mask/UserByteFieldMask.java)
 
 ```java
     public static final byte ID     = 0b00001;
@@ -166,7 +166,7 @@ public class Printer {
     }
 ```
 
-8. [Merge method](softLab/src/main/java/lab01/softlab/mask/MaskMethods.java)
+8. [Merge method](src/main/java/lab01/softlab/mask/MaskMethods.java)
 
 ```java
     // Метод для сравнения значений по маске
@@ -211,7 +211,7 @@ public class Printer {
     }
 ```
 
-9. [Unit tests](softLab/src/test/java/lab01/user_mask_tests/UserMaskTests.java)
+9. [Unit tests](src/test/java/lab01/user_mask_tests/UserMaskTests.java)
 
 ```java
     @Mock
