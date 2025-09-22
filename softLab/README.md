@@ -189,26 +189,7 @@ public class Printer {
 
 ```java
 // Метод merge для всех пользователей из БД
-    public List<User> merge(UserFieldMask mask){
-        List<User> allUsers = repo.findAll();
-        List<User> merged = new ArrayList<>();
-        for(var u : allUsers){
-            User exists = merged.stream().filter(u1 -> equalByMask(u1, u, mask)).
-                    findFirst().orElse(null);
-            if(exists == null){
-                exists = new User();
-                exists.setName(u.getName());
-                exists.setAge(u.getAge());
-                exists.setRole(u.getRole());
-                exists.setRating(u.getRating());
-                merged.add(exists);
-            }else{
-                float avg = (float) allUsers.stream().mapToDouble(User::getRating).average().getAsDouble();
-                exists.setRating(avg);
-            }
-        }
-        return merged;
-    }
+
 ```
 
 9. [Unit tests](src/test/java/lab01/user_mask_tests/UserMaskTests.java)
