@@ -2,9 +2,9 @@ package lab01.softlab.mask;
 
 import lab01.softlab.entities.User;
 import lab01.softlab.repo.UserRepository;
-import lab01.softlab.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.method.support.CompositeUriComponentsContributor;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,20 +12,16 @@ import java.util.stream.Collectors;
 @Component
 public class MaskMethods {
 
+    private static final Logger log = LoggerFactory.getLogger(MaskMethods.class);
     private final UserRepository repo;
-    private final UserService userService;
-    private final CompositeUriComponentsContributor compositeUriComponentsContributor;
 
-    public MaskMethods(UserRepository repo, UserService userService, CompositeUriComponentsContributor compositeUriComponentsContributor) {
+    public MaskMethods(UserRepository repo) {
         this.repo = repo;
-        this.userService = userService;
-        this.compositeUriComponentsContributor = compositeUriComponentsContributor;
     }
-
-
 
     public List<User> merge(UserFieldMask mask){
         List<User> allUsers = repo.findAll();
+
         Map<String, List<User>> duplicates = allUsers.stream()
                 .collect(Collectors.groupingBy(u -> keyGenerator(u, mask)));
 
@@ -63,7 +59,7 @@ public class MaskMethods {
             key.append("age: ").append(user.getAge()).append(";");
         }
         if(mask.isName()){
-            key.append("name: ").append(user.getAge()).append(";");
+            key.append("name: ").append(user.getName()).append(";");
         }
         if(mask.isRating()){
             key.append("rating: ").append(user.getRating()).append(";");
@@ -75,11 +71,12 @@ public class MaskMethods {
     }
 
     private void setFieldsAccordingToMask(User targetUser, User sourceUser, UserFieldMask mask) {
+
+        targetUser.setRating(sourceUser.getRating());
+        targetUser.setName(sourceUser.getName());
+
         if (mask.isAge()) {
             targetUser.setAge(sourceUser.getAge());
-        }
-        if (mask.isName()) {
-            targetUser.setName(sourceUser.getName());
         }
         if (mask.isRating()) {
             targetUser.setRating(sourceUser.getRating());
@@ -88,4 +85,6 @@ public class MaskMethods {
             targetUser.setRole(sourceUser.getRole());
         }
     }
+
+
 }

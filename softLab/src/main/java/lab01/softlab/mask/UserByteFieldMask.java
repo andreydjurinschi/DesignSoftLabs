@@ -3,7 +3,7 @@ package lab01.softlab.mask;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserByteFieldMask {
+public final class UserByteFieldMask {
 
     public static final byte ID     = 0b00001;
     public static final byte NAME   = 0b00010;
@@ -13,13 +13,6 @@ public class UserByteFieldMask {
 
     private byte mask = 0;
 
-    public byte getMask() {
-        return mask;
-    }
-
-    public void setMask(byte mask) {
-        this.mask = mask;
-    }
 
     public void addField(byte field) {
         this.mask |= field;
@@ -34,4 +27,15 @@ public class UserByteFieldMask {
     public boolean hasAGE()    { return hasField(AGE); }
     public boolean hasRATING() { return hasField(RATING); }
     public boolean hasROLE()   { return hasField(ROLE); }
+
+
+
+
+    public byte getMask() {
+        return mask;
+    }
+
+    public void setMask(byte mask) {
+        this.mask = mask;
+    }
 }

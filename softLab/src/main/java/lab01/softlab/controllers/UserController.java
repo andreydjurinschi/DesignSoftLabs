@@ -8,7 +8,6 @@ import lab01.softlab.mask.UserByteFieldMask;
 import lab01.softlab.mask.UserFieldMask;
 import lab01.softlab.printer.Printer;
 import lab01.softlab.service.UserService;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,31 +56,44 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(serv.getRetired(role));
     }
 
-    @GetMapping("/merge")
+/*    @GetMapping("/merge")
     public ResponseEntity<List<Object>> mergeUsers(@RequestBody UserFieldMask mask){
         List<User> merged = maskMethods.merge(mask);
         List<Object> result = new ArrayList<>();
         UserFieldMask mask1 = new UserFieldMask();
-        if(mask.isName()){
+        if (mask.isAnySet())
+        {
+            mask1.setRating(true);
+        }
+        if (mask.isRating())
+        {
             mask1.setName(true);
-            mask1.setRating(true);
         }
-        if(mask.isRole()){
-            mask1.setRating(true);
-            mask1.setRole(true);
-        }
-        if(mask.isRating()){
-            mask1.setName(true);
-            mask1.setRating(true);
-        }
-        if(mask.isAge()){
-            mask1.setName(true);
-            mask1.setAge(true);
-            mask1.setRating(true);
-        }
+        mask1.copyAllBut(mask, RATING | NAME);
         for(var u : merged){
             result.add(Printer.print(u, mask1));
         }
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }*/
+
+    @GetMapping("/merge")
+    public ResponseEntity<List<Object>> merge(@RequestBody UserFieldMask mask){
+        List<User> merged = maskMethods.merge(mask);
+        List<Object> result = new ArrayList<>();
+        UserFieldMask printMask = new UserFieldMask();
+        if(mask.isAnySet()){
+            printMask.setRating(true);
+        }
+        if(mask.isRating()){
+            printMask.setName(true);
+        }
+        printMask = UserFieldMask.setAllBut(mask, "rating", "name");
+        System.out.println(printMask.isName());
+        for(User u : merged){
+            System.out.println(u.getName());
+            result.add(Printer.print(u, printMask));
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

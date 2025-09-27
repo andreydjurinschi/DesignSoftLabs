@@ -34,6 +34,7 @@ public class UserService {
         return res;
     }
 
+
     public List<Map<String, Object>> getAllRefToMask(UserByteFieldMask mask){
         List<User> allUsers = repo.findAll();
         List<Map<String, Object>> res = new ArrayList<>();

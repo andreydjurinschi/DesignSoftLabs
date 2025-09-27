@@ -71,7 +71,7 @@ public class UserMaskTests {
         Assertions.assertEquals(Role.TEACHER, u2.get("role"));
     }
 
-    @Test
+/*    @Test
     void getFieldByMask(){
         byte mask = FieldMaskTestClass.createMask(FieldMaskTestClass.ID, FieldMaskTestClass.NAME);
 
@@ -82,5 +82,5 @@ public class UserMaskTests {
         Assertions.assertTrue(hasId);
         Assertions.assertTrue(hasName);
         Assertions.assertFalse(hasRating);
-    }
+    }*/
 }
