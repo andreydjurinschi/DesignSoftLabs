@@ -11,7 +11,7 @@ import java.util.*;
  * IMPORTANT! before calling this step needs to be called
  * you need to call {@link CheckUsernameStep}
  * -----------------------------------------
- * step that generate the username for user
+ * step generate the username for user
  */
 public class GenerateUsernameStep implements IPipelineStep {
     @Override
