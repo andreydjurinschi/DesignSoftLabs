@@ -2,22 +2,25 @@
   {
     "name": "Baron",
     "surname": "Herzog",
-    "dateOfBirth": "1997-04-22"
+    "dateOfBirth": "1997-04-22",
+    "username": "baron_the_best"
   },
   {
     "name": "Tyra",
     "surname": "Welch",
-    "dateOfBirth": "2025-05-06"
+    "dateOfBirth": "2025-05-06",
+    "username": "NIGHT_WITCH"
   },
   {
     "name": "Deangelo",
-    "surname": "Howe-Gerlach",
+    "surname": "Howegerlach",
     "dateOfBirth": "1981-06-22"
   },
   {
     "name": "Janis",
     "surname": "Labadie",
-    "dateOfBirth": "1977-02-09"
+    "dateOfBirth": "1977-02-09",
+    "username": "Clash_royal"
   },
   {
     "name": "Myra",

@@ -1,16 +1,18 @@
 package softLab;
 
-import softLab.pipline.Pipeline;
-import softLab.pipline.context.Context;
-import softLab.pipline.steps.ExtractNameAndSurname;
+import softLab.simplePipline.Context;
+import softLab.simplePipline.Pipeline;
+import softLab.simplePipline.steps.CheckUsernameStep;
+import softLab.simplePipline.steps.GenerateUsernameStep;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Context context = new Context();
-        Pipeline mainPipeline = new Pipeline();
-        mainPipeline.addStep(new ExtractNameAndSurname());
-        mainPipeline.Execute(context);
+        Pipeline pipeline = new Pipeline();
+        pipeline.addStep(new CheckUsernameStep());
+        pipeline.addStep(new GenerateUsernameStep());
+        pipeline.execute(context);
     }
 }

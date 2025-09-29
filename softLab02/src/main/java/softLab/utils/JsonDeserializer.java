@@ -15,8 +15,7 @@ public class JsonDeserializer {
     public static List<User> deserialize() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
-        List<User> users = mapper.readValue(new File("softLab02/src/main/java/softLab/users.json"),
+        return mapper.readValue(new File("softLab02/src/main/java/softLab/users.json"),
                 new TypeReference<>() {});
-        return users;
     }
 }

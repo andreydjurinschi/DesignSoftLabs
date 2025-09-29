@@ -13,10 +13,16 @@ public final class User {
     private String name;
     private String surname;
     private LocalDate dateOfBirth;
-    private String login = null;
+    private String username;
 
-    public User() {
+    public User(String name, String surname, LocalDate dateOfBirth, String username) {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.username = username;
     }
+
+    public User(){}
 
     public User(String name, String surname, LocalDate dateOfBirth) {
         this.name = name;
@@ -48,7 +54,11 @@ public final class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getLogin(){
-        return login;
+    public String getUsername(){
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
