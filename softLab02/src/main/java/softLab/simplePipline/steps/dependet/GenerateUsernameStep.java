@@ -1,8 +1,9 @@
-package softLab.simplePipline.steps;
+package softLab.simplePipline.steps.dependet;
 
 import softLab.entities.User;
 import softLab.simplePipline.Context;
 import softLab.simplePipline.IPipelineStep;
+import softLab.simplePipline.steps.independet.CheckUsernameStep;
 
 import java.util.*;
 

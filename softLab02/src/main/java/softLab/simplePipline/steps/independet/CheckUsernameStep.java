@@ -1,4 +1,4 @@
-package softLab.simplePipline.steps;
+package softLab.simplePipline.steps.independet;
 
 import softLab.entities.User;
 import softLab.simplePipline.Context;

@@ -1,11 +1,13 @@
-package softLab.simplePipline.steps;
+package softLab.simplePipline.steps.independet;
 
 import softLab.simplePipline.Context;
 import softLab.simplePipline.IPipelineStep;
 
 /**
- * Independent step that
- * shows the user count
+ * ------------------------------------------------
+ * Independent step
+ * ------------------------------------------------
+ * step that shows user count
  */
 public class UsersCountStep implements IPipelineStep {
 

@@ -1,4 +1,4 @@
-package softLab.simplePipline.steps;
+package softLab.simplePipline.steps.dependet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -30,13 +30,13 @@ public class ExportUpdatedUsersStep implements IPipelineStep {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         File file = new File(pathToFile);
+
         try{
             mapper.writerWithDefaultPrettyPrinter()
                     .writeValue(file, userList);
-
             System.out.println("Updated users exported to " + pathToFile);
         } catch (IOException e) {
-            System.out.println("Error while writing updated users to " + pathToFile);
+            System.out.println("Error while writing updated users to " + pathToFile + "; " + e.getMessage());
         }
     }
 }
