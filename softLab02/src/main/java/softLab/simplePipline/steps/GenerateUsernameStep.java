@@ -26,9 +26,11 @@ public class GenerateUsernameStep implements IPipelineStep {
                    + user.getSurname().toLowerCase()
                    + date;
             generatedUsernames.put(user.getName(), username);
+            user.setUsername(username);
         });
         for(var item : generatedUsernames.entrySet()){
-            System.out.println(item.getKey() + ": " + item.getValue());
+            System.out.println("Username generated for: " + item.getKey() + ": " + item.getValue());
         }
+
     }
 }
