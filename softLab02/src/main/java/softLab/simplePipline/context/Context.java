@@ -1,4 +1,4 @@
-package softLab.simplePipline;
+package softLab.simplePipline.context;
 
 import softLab.entities.User;
 import softLab.utils.JsonDeserializer;

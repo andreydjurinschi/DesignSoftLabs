@@ -3,7 +3,7 @@ package softLab.simplePipline.steps.dependet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import softLab.entities.User;
-import softLab.simplePipline.Context;
+import softLab.simplePipline.context.Context;
 import softLab.simplePipline.IPipelineStep;
 import java.io.File;
 import java.io.IOException;

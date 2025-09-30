@@ -1,6 +1,6 @@
 package softLab.simplePipline.steps.independet;
 
-import softLab.simplePipline.Context;
+import softLab.simplePipline.context.Context;
 import softLab.simplePipline.IPipelineStep;
 
 import java.util.HashMap;

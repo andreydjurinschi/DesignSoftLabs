@@ -1,7 +1,7 @@
 package softLab.simplePipline.steps.dependet;
 
 import softLab.entities.User;
-import softLab.simplePipline.Context;
+import softLab.simplePipline.context.Context;
 import softLab.simplePipline.IPipelineStep;
 import softLab.simplePipline.steps.independet.CheckUsernameStep;
 

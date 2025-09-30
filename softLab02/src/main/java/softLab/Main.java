@@ -1,6 +1,6 @@
 package softLab;
 
-import softLab.simplePipline.Context;
+import softLab.simplePipline.context.Context;
 import softLab.simplePipline.PipelineFactory;
 
 import java.io.IOException;
