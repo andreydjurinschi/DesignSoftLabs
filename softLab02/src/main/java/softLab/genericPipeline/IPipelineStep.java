@@ -1,5 +1,7 @@
 package softLab.genericPipeline;
 
-public interface IPipelineStep<TContext, TOut> {
-    TOut Execute(TContext data);
+import softLab.genericPipeline.context.Context;
+
+public interface IPipelineStep<I, O> {
+    Context<O> Execute(Context<I> context);
 }
