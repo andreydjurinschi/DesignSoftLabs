@@ -30,11 +30,11 @@ public class Main {
          * Generic pipeline, that creates user
          * -----------------------------------
          */
-        /*User user = new User();
-        user.setName("TEST");
-        user.setSurname("TEST");
+        User user = new User();
+        user.setName("test");
+        user.setSurname("test_surname");
         user.setDateOfBirth(LocalDate.now());
-        PipelineFactory.CreateNewUsersPipeline(user);*/
+        PipelineFactory.CreateNewUsersPipeline(user);
 
         /**
          * ---------------

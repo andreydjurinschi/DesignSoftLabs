@@ -3,6 +3,7 @@ package softLab.genericPipeline.steps.independet.oneEntitySteps;
 import softLab.entities.User;
 import softLab.genericPipeline.IPipelineStep;
 import softLab.genericPipeline.context.Context;
+import softLab.visitor.IVisitor;
 
 public class GenerateUsernameStep implements IPipelineStep<User, User> {
     @Override
@@ -13,6 +14,10 @@ public class GenerateUsernameStep implements IPipelineStep<User, User> {
             context.setValid(true);
         }
         return context;
+    }
+
+    public String accept(IVisitor visitor){
+        return visitor.visitGenerateUsernameStep(this);
     }
 
 }

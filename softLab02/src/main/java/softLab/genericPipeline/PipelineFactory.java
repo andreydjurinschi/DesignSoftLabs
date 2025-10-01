@@ -9,6 +9,8 @@ import softLab.genericPipeline.steps.independet.oneEntitySteps.CheckIfUsernameIs
 import softLab.genericPipeline.steps.independet.oneEntitySteps.GenerateUsernameStep;
 import softLab.genericPipeline.steps.independet.oneEntitySteps.NormalizeNameSurnameStep;
 import softLab.genericPipeline.testSteps.InitDataStep;
+import softLab.visitor.IVisitor;
+import softLab.visitor.Visitor;
 
 import java.util.Collections;
 
@@ -24,6 +26,8 @@ public class PipelineFactory {
         pipeline.executeSteps(context);
     }
     public static void CreateNewUsersPipeline(User user){
+
+        Visitor visitor = new Visitor();
         Context<User> context = new Context<>(user);
         Pipeline pipeline = new Pipeline();
         pipeline.addStep(new NormalizeNameSurnameStep());
@@ -31,5 +35,7 @@ public class PipelineFactory {
         pipeline.addStep(new GenerateUsernameStep());
         pipeline.addStep(new AddUserToFileStep("softlab02/src/main/java/softLab/simplePipeline/simplePipelineData/updated_users.json"));
         pipeline.executeSteps(context);
+
+        System.out.println(pipeline.printStepsLog(visitor));
     }
 }

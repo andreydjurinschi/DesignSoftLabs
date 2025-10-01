@@ -4,6 +4,7 @@ import softLab.entities.User;
 import softLab.genericPipeline.IPipelineStep;
 import softLab.genericPipeline.context.Context;
 import softLab.utils.JsonWrite;
+import softLab.visitor.IVisitor;
 
 public class AddUserToFileStep implements IPipelineStep<User, User> {
     private String fileName;
@@ -17,5 +18,9 @@ public class AddUserToFileStep implements IPipelineStep<User, User> {
         JsonWrite.addUser(fileName, context.getUser());
         System.out.println("Added user to the file: " + fileName);
         return context;
+    }
+
+    public String accept(IVisitor visitor){
+        return visitor.visitAddUser(this);
     }
 }

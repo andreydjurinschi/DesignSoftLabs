@@ -12,6 +12,8 @@ public final class Context<T> {
 
     boolean isValid = true; // for creating steps
 
+
+
     public Context(List<T> data) {
         this.data = (data!=null) ? data : Collections.EMPTY_LIST;
     }

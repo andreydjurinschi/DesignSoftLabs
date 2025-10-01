@@ -80,8 +80,14 @@
   "username" : "mason80"
 }, {
   "NEW_USER" : "NEW_USER",
-  "name" : "TEST",
-  "surname" : "TEST",
+  "name" : "Test",
+  "surname" : "Test_surname",
   "dateOfBirth" : "2025-10-01",
-  "username" : "TEST.TEST@usm.md"
+  "username" : "Test.Test_surname@usm.md"
+}, {
+  "NEW_USER" : "NEW_USER",
+  "name" : "Test",
+  "surname" : "Test_surname",
+  "dateOfBirth" : "2025-10-01",
+  "username" : "Test.Test_surname@usm.md"
 } ]
