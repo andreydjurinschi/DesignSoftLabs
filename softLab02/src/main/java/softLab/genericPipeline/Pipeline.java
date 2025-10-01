@@ -35,7 +35,7 @@ public class Pipeline{
 
     private String stepDescription(IPipelineStep<?, ?> step, IVisitor visitor){
         if(step instanceof NormalizeNameSurnameStep normalizeStep){
-            return normalizeStep.accept(visitor);
+            return normalizeStep.accept(visitor, normalizeStep.getBuilder());
         } else if(step instanceof CheckIfUsernameIsNotNull checkStep){
             return checkStep.accept(visitor);
         } else if(step instanceof GenerateUsernameStep genStep){

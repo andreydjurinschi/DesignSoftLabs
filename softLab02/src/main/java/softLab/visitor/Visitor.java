@@ -24,8 +24,12 @@ public class Visitor implements IVisitor {
     }
 
     @Override
-    public String visitNormalizeNameStep(NormalizeNameSurnameStep step) {
-        return "NormalizeNameSurnameStep visited\n";
+    public String visitNormalizeNameStep(NormalizeNameSurnameStep step, StringBuilder data) {
+        return "_____________Normalize name step called:_____________\n" +
+                "\n"
+                + data +
+                "\n__________________________________________________\n";
     }
+
 }
 

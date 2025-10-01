@@ -9,8 +9,8 @@ import softLab.genericPipeline.steps.independet.oneEntitySteps.NormalizeNameSurn
  * visitor interface
  */
 public interface IVisitor {
-    String visitAddUser(AddUserToFileStep step);
-    String visitCheckIfUsernameIsNotNull(CheckIfUsernameIsNotNull step);
-    String visitGenerateUsernameStep(GenerateUsernameStep step);
-    String visitNormalizeNameStep(NormalizeNameSurnameStep  step);
+    String visitAddUser(AddUserToFileStep step, StringBuilder data);
+    String visitCheckIfUsernameIsNotNull(CheckIfUsernameIsNotNull step, StringBuilder data);
+    String visitGenerateUsernameStep(GenerateUsernameStep step, StringBuilder data);
+    String visitNormalizeNameStep(NormalizeNameSurnameStep  step, StringBuilder data);
 }

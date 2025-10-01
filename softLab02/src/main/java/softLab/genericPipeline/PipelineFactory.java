@@ -26,16 +26,15 @@ public class PipelineFactory {
         pipeline.executeSteps(context);
     }
     public static void CreateNewUsersPipeline(User user){
-
         Visitor visitor = new Visitor();
         Context<User> context = new Context<>(user);
         Pipeline pipeline = new Pipeline();
         pipeline.addStep(new NormalizeNameSurnameStep());
-        pipeline.addStep(new CheckIfUsernameIsNotNull());
+       /* pipeline.addStep(new CheckIfUsernameIsNotNull());
         pipeline.addStep(new GenerateUsernameStep());
         pipeline.addStep(new AddUserToFileStep("softlab02/src/main/java/softLab/simplePipeline/simplePipelineData/updated_users.json"));
+        */
         pipeline.executeSteps(context);
-
         System.out.println(pipeline.printStepsLog(visitor));
     }
 }
