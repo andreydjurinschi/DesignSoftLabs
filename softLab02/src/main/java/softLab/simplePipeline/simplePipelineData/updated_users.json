@@ -78,4 +78,10 @@
   "surname" : "Clark",
   "dateOfBirth" : [ 1980, 8, 18 ],
   "username" : "mason80"
+}, {
+  "NEW_USER" : "NEW_USER",
+  "name" : "TEST",
+  "surname" : "TEST",
+  "dateOfBirth" : "2025-10-01",
+  "username" : "TEST.TEST@usm.md"
 } ]

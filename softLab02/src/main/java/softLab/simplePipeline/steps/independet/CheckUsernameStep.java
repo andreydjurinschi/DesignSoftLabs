@@ -10,7 +10,7 @@ import java.util.List;
  * ------------------------------------------------
  * Independent step
  * ------------------------------------------------
- * Step for checking if every user have an username
+ * Step for checking if every user have a username
  */
 
 public class CheckUsernameStep implements IPipelineStep {
