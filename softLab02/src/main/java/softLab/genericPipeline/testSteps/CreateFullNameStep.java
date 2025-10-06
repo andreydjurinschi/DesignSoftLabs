@@ -1,3 +1,4 @@
+/*
 package softLab.genericPipeline.testSteps;
 
 import softLab.entities.User;
@@ -18,3 +19,4 @@ public class CreateFullNameStep implements IPipelineStep<User, String>{
         return new Context<>(fullNames);
     }
 }
+*/

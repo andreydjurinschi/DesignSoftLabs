@@ -2,10 +2,6 @@ package softLab;
 
 import softLab.entities.User;
 import softLab.genericPipeline.Pipeline;
-import softLab.genericPipeline.testSteps.CreateFullNameStep;
-import softLab.genericPipeline.testSteps.InitDataStep;
-import softLab.genericPipeline.testSteps.PrintFullNames;
-/*import softLab.simplePipeline.PipelineFactory;*/
 import softLab.genericPipeline.PipelineFactory;
 import softLab.simplePipeline.context.Context;
 
@@ -21,21 +17,19 @@ public class Main {
          * Generic pipeline that simple generates an email
          * -----------------------------------------------
          */
-        /*PipelineFactory.GenerateEmailsPipeline();*/
-
-
+       // PipelineFactory.GenerateEmailsPipeline();
 
         /**
          * -----------------------------------
          * Generic pipeline, that creates user
          * -----------------------------------
          */
-        User user = new User();
-        user.setName("test");
-        user.setSurname("test_surname");
-        user.setDateOfBirth(LocalDate.now());
-        PipelineFactory.CreateNewUsersPipeline(user);
-
+/*        User user = new User();
+        user.setName("oleg");
+        user.setSurname("ciornei");
+        user.setUsername("ciornei");
+        user.setDateOfBirth(LocalDate.of(2112, 11, 05));
+        PipelineFactory.CreateNewUsersPipeline(user);*/
         /**
          * ---------------
          * SIMPLE PIPELINE

@@ -1,4 +1,4 @@
-package softLab.genericPipeline.steps.independet.oneEntitySteps;
+package softLab.genericPipeline.steps.oneEntitySteps;
 
 import softLab.entities.User;
 import softLab.genericPipeline.IPipelineStep;

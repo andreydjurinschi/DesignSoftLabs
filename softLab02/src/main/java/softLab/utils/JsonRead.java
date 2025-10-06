@@ -15,7 +15,7 @@ public class JsonRead {
     public static List<User> deserialize() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
-        return mapper.readValue(new File("softlab02/src/main/java/softLab/simplePipeline/simplePipelineData/users.json"),
+        return mapper.readValue(new File("softLab02/src/main/java/softLab/pipelineData/users.json"),
                 new TypeReference<>() {});
     }
 }

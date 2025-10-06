@@ -8,21 +8,16 @@ import java.util.List;
 public final class Context<T> {
     private List<T> data;
 
-    private User user; // for creating stepss
+    private User user; // for creating steps
 
-    boolean isValid = true; // for creating steps
+    private boolean isValid = true; // for creating steps
 
-
+    private boolean isDone = false;
 
     public Context(List<T> data) {
         this.data = (data!=null) ? data : Collections.EMPTY_LIST;
     }
 
-    /**
-     * Constructor for user creating steps only
-     * {@link User}
-     * @param user
-     */
     public Context(User user) {
         this.user = user;
     }
@@ -43,9 +38,9 @@ public final class Context<T> {
         this.user = user;
     }
 
-    public Context<T> returnNew(List<T> data){
+/*    public Context<T> returnNew(List<T> data){
         return new Context<>(data);
-    }
+    }*/
 
     public Context<User> returnNew(User data){
         return new Context<>(data);
@@ -56,6 +51,14 @@ public final class Context<T> {
     }
     public void setValid(boolean valid) {
         isValid = valid;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 }
 

@@ -1,3 +1,4 @@
+/*
 package softLab.genericPipeline.testSteps;
 
 
@@ -11,3 +12,4 @@ public class PrintFullNames implements IPipelineStep<String, String> {
         return context;
     }
 }
+*/
