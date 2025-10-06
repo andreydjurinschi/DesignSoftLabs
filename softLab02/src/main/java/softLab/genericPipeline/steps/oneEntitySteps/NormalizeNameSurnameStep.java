@@ -41,8 +41,7 @@ public class NormalizeNameSurnameStep implements IPipelineStep<User, User> {
         return Character.isLowerCase(str.charAt(0));
     }
 
-    public String accept(IVisitor visitor, StringBuilder data){
-
-        return visitor.visitNormalizeNameStep(this, data);
+    public String accept(IVisitor visitor){
+        return visitor.visitNormalizeNameStep(this, builder);
     }
 }
