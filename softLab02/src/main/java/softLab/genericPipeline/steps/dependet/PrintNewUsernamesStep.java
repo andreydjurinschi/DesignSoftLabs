@@ -18,6 +18,7 @@ public class PrintNewUsernamesStep implements IPipelineStep<String, String> {
                     builder.append(u + "\n");
                 }
         );
+        context.setDone(true);
         return context;
     }
 

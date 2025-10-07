@@ -26,13 +26,15 @@ public final class Context<T> {
         return data;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+
     public int count(){
         return data.size();
     }
 
-    public User getUser() {
-        return user;
-    }
 
     public void setUser(User user) {
         this.user = user;

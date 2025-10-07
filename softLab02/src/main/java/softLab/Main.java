@@ -17,14 +17,14 @@ public class Main {
          * Generic pipeline that simple generates an email
          * -----------------------------------------------
          */
-       // PipelineFactory.GenerateEmailsPipeline();
+        PipelineFactory.GenerateEmailsPipeline();
 
         /**
          * -----------------------------------
          * Generic pipeline, that creates user
          * -----------------------------------
          */
-/*        User user = new User();
+/*      User user = new User();
         user.setName("oleg");
         user.setSurname("ciornei");
         user.setUsername("ciornei");

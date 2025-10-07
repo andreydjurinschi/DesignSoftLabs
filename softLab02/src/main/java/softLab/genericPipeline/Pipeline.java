@@ -20,7 +20,7 @@ public class Pipeline{
         steps.add(step);
     }
 
-    public <T> Context<T> executeSteps(Context<?> data){
+    public /*<T> Context<T>*/ void executeSteps(Context<?> data){
         Context<?> intermediateData = data;
         for(IPipelineStep<?, ? > step : steps){
             if(intermediateData.isDone()){
@@ -29,8 +29,9 @@ public class Pipeline{
             }
             intermediateData = ((IPipelineStep<Object, Object>) step).Execute((Context<Object>) intermediateData);
         }
-        return (Context<T>) intermediateData;
+        /*return (Context<T>) intermediateData;*/
     }
+
     public String printStepsLog(Visitor visitor, Context<?> context){
         StringBuilder builder = new StringBuilder();
         for(IPipelineStep<?, ?> step : steps){
