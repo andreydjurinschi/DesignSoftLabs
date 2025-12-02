@@ -9,8 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>lab04.class_hierarchy</groupId>
-    <artifactId>class_hierarchy</artifactId>
+    <artifactId>library</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

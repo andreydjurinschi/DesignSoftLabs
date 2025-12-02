@@ -11,6 +11,8 @@
     <modules>
         <module>class_hierarchy</module>
         <module>interfaces_usage</module>
+        <module>library</module>
+        <module>user_app</module>
     </modules>
 
     <properties>

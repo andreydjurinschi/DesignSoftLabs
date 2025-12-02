@@ -1,0 +1,8 @@
+Main.class
+entities\MagicWeapon.class
+entities\Weapon.class
+properties\Shooting.class
+entities\Entity.class
+properties\HasMana.class
+entities\Player.class
+properties\HasHp.class
