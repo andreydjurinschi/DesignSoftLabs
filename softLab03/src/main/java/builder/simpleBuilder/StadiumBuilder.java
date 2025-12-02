@@ -1,26 +1,23 @@
-package builder;
+package builder.simpleBuilder;
 
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 import model.additional_components.Capacity;
 import model.additional_components.Characteristics;
 import model.Stadium;
+import validator.FieldValidator;
+
+import java.util.List;
 
 public class StadiumBuilder implements Builder{
 
-    private final Validator validator;
+    private static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     private  String name;
     private  String city;
     private  String owner;
     private  Characteristics characteristics;
     private Capacity capacity;
-
-    public StadiumBuilder() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        this.validator = factory.getValidator();
-    }
 
     @Override
     public void setName(String name) {
@@ -49,18 +46,32 @@ public class StadiumBuilder implements Builder{
 
     public Stadium getResult(){
         var stadium = new Stadium(name, city, owner, characteristics, capacity);
-        var failure = validator.validate(stadium);
-        if(failure.isEmpty() == false){
-            StringBuilder errors = new StringBuilder("Errors:\n");
-            failure.forEach(
-                    f ->
-                        errors.append(f.getPropertyPath())
-                                .append(":")
-                                .append(f.getMessage())
-                                .append("\n")
-            );
-            throw new IllegalStateException(errors.toString());
+        List<String> errors = FieldValidator.check(stadium);
+        errors.addAll(FieldValidator.check(stadium.getCapacity()));
+        errors.addAll(FieldValidator.check(stadium.getCharacteristics()));
+        if(!errors.isEmpty()){
+            errors.forEach(er -> {
+                System.out.println(er);
+            });
+            throw new IllegalStateException("ERRORS");
         }
         return stadium;
     }
+
+    public static Stadium getResult(String name, String city, String owner, Characteristics characteristics, Capacity capacity){
+        Stadium st = new Stadium(name, city, owner, characteristics, capacity);
+        var failure = validator.validate(st);
+        if(!failure.isEmpty()){
+            StringBuilder errors = new StringBuilder("Errors:\n");
+            for(var data : failure){
+                errors.append(data.getPropertyPath())
+                        .append(":")
+                        .append(data.getMessage())
+                        .append("\n");
+            }
+            throw new IllegalStateException(errors.toString());
+        }
+        return st;
+    }
+
 }

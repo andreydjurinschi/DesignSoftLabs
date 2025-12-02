@@ -1,6 +1,14 @@
-package director;
+/*        b = ();
+        b.stadium(x -> x
+                .name("")
+                .city(""));
+        b.stadium(x -> x
+                .name("")
+                .city(""));*/
 
-import builder.StadiumBuilder;
+package director;
+import builder.simpleBuilder.StadiumBuilder;
+import builder.fluentBuilder.StadiumFluentBuilder;
 import model.additional_components.Capacity;
 import model.additional_components.Characteristics;
 import model.additional_components.FieldCategory;
@@ -10,6 +18,7 @@ public class Director {
     public void constructStadiumByBudget
             (StadiumBuilder builder, String name, String city, String owner, double budget)
     {
+
         builder.setName(name);
         builder.setCity(city);
         builder.setOwner(owner);
@@ -23,14 +32,14 @@ public class Director {
             ));
         } else if (budget > 5000 && budget < 15000) {
             builder.setCapacity(new Capacity(
-                    15000
+                    50
             ));
             builder.setCharacteristics(new Characteristics(
                     105, 70, new double[]{4.0, 4.0}, GrassType.NATURAL, FieldCategory.ELITE
             ));
         } else if (budget > 15000) {
             builder.setCapacity(new Capacity(
-                    50000
+                    50
             ));
             builder.setCharacteristics(new Characteristics(
                     110, 75, new double[]{7.0, 7.0}, GrassType.HYBRID, FieldCategory.FIFA
@@ -39,4 +48,21 @@ public class Director {
             throw new IllegalStateException("low budget");
         }
     }
+
+    public void fluentBuild(StadiumFluentBuilder builder){
+        builder.setName("test")
+                .setCity("test city")
+                .setOwner("test owner")
+                .setCapacity(new Capacity(20000))
+                .setCharacteristics(new Characteristics(
+                   100.0,
+                   70.0,
+                        new double[]{5.0,5.0}
+                        ,
+                   GrassType.NATURAL,
+                   FieldCategory.FIFA
+                ));
+    }
+
+
 }

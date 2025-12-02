@@ -8,12 +8,14 @@ import model.additional_components.Characteristics;
 
 
 public final class Stadium {
-    @NotBlank(message = "stadium name field is required")
+    @NotNull(message = "stadium name field is required")
     @Size(min = 2, max = 50)
     private final String name;
-    @NotBlank(message = "stadium city field is required")
+    @NotNull(message = "stadium city field is required")
+    @Size(min = 2, max = 50)
     private final String city;
-    @NotBlank(message = "stadium owner field is required")
+    @NotNull(message = "stadium owner field is required")
+    @Size(min = 2, max = 50)
     private final String owner;
     @NotNull(message = "stadium characteristics are required")
     private final Characteristics characteristics;

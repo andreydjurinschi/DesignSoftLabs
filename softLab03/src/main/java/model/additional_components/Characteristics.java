@@ -1,5 +1,7 @@
 package model.additional_components;
 
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import jakarta.validation.constraints.*;
 
 import java.util.Arrays;
@@ -26,6 +28,18 @@ public final class Characteristics {
         this.safeArea = safeArea;
         this.grassType = grassType;
         this.fieldCategory = fieldCategory;
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        var failure = validator.validate(this);
+        if(!failure.isEmpty()){
+            StringBuilder errors = new StringBuilder("Errors:\n");
+            for(var data : failure){
+                errors.append(data.getPropertyPath())
+                        .append(":")
+                        .append(data.getMessage())
+                        .append("\n");
+            }
+            throw new IllegalStateException(errors.toString());
+        }
     }
 
     public double getLength() {

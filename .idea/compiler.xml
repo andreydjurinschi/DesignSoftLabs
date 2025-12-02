@@ -9,6 +9,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="class_hierarchy" />
+        <module name="interfaces_usage" />
         <module name="softlab02" />
         <module name="builder03" />
         <module name="softLab" />

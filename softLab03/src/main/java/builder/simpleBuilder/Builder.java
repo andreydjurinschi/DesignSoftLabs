@@ -1,4 +1,4 @@
-package builder;
+package builder.simpleBuilder;
 
 import model.additional_components.Capacity;
 import model.additional_components.Characteristics;
