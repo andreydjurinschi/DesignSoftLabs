@@ -48,7 +48,6 @@ public class Main {
     }
     /*
     * custom speed changing method
-    *
     */
     public static void  changeSpeed(Entity e, float value, char way){
         Entity.Holder<Float> speedHolder = new Entity.Holder<>();
