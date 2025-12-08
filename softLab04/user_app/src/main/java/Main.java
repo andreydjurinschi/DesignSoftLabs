@@ -43,6 +43,7 @@ public class Main {
         }
 
         changeSpeed(player2, 8, '+');
+
         System.out.println("Changed speed - " + playerTwoSpeedHolder.value);
 
     }
